@@ -1,11 +1,13 @@
+from collections import deque
+
 def bfs(graph, startNode):
     visited = set()
-    queue = []
+    queue = deque()
     visited.add(startNode)
     queue.append(startNode)
 
     while queue:
-        node = queue.pop(0)
+        node = queue.popleft()
         print(node, end=", ")
 
         neighbors = graph.get(node)
