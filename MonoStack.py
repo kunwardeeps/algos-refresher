@@ -1,5 +1,6 @@
+from collections import deque
 def nle(A):
-    stack = []
+    stack = deque()
     nle = [-1] * len(A)
 
     for i in range(len(A)):
@@ -12,7 +13,7 @@ def nle(A):
 
 
 def ple(A):
-    stack = []
+    stack = deque()
     ple = [-1] * len(A)
 
     for i in range(len(A)):
