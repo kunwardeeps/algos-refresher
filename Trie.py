@@ -1,6 +1,6 @@
 class TrieNode:
     def __init__(self):
-        self.children = [None] * 26
+        self.children = {}
         self.item = ""
 
 root = TrieNode()
@@ -8,10 +8,9 @@ root = TrieNode()
 def addWord(word):
     node = root
     for c in word:
-        index = ord(c) - ord('a')
-        if not node.children[index]:
-            node.children[index] = TrieNode()
-        node = node.children[index]
+        if c not in node.children:
+            node.children[c] = TrieNode()
+        node = node.children[c]
     node.item = word
 
 def search(word):
@@ -21,10 +20,10 @@ def match(ch_list, k, node):
     if k == len(ch_list):
         return bool(node.item) # return True if the node is not empty
     if ch_list[k] != '.':
-        index = ord(ch_list[k]) - ord('a')
-        return node.children[index] and match(ch_list, k + 1, node.children[index])
+        c = ch_list[k]
+        return c in node.children and match(ch_list, k + 1, node.children[c])
     else:
-        for child in node.children:
+        for c, child in node.children.items():
             if child and match(ch_list, k + 1, child):
                 return True
     return False
