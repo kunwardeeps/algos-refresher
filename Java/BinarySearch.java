@@ -1,3 +1,4 @@
+import java.beans.Transient;
 import java.util.Arrays;
 
 public class BinarySearch {
@@ -51,6 +52,32 @@ public class BinarySearch {
         return r < 0 ? -1 : r; 
     } 
 
+    public static int binarySearchHigh(int arr[], int x) { 
+        int l = 0, r = arr.length - 1; 
+        while (l <= r) { 
+            int m = l + (r - l) / 2; 
+            if (arr[m] <= x) {
+                l = m + 1; 
+            } else {
+                r = m - 1; 
+            }
+        } 
+        return r; 
+    } 
+
+    public static int binarySearchLow(int arr[], int x) { 
+        int l = 0, r = arr.length - 1; 
+        while (l <= r) { 
+            int m = l + (r - l) / 2; 
+            if (arr[m] < x) {
+                l = m + 1; 
+            } else {
+                r = m - 1; 
+            }
+        } 
+        return l; 
+    } 
+
     /**
      * Recursive
      */
@@ -87,5 +114,12 @@ public class BinarySearch {
         System.out.println("Binary 5:" + (binarySearch(arr, 5) == 2));
         System.out.println("Binary 7:" + (binarySearch(arr, 7) == 3));
         System.out.println("Binary 2:" + (binarySearch(arr, 2) == -1));
+
+        int[] arr1 = new int[] {1, 1, 3, 5, 5, 5, 7, 7};
+        System.out.println(Arrays.toString(arr1));
+        System.out.println("Binary High 5:" + (binarySearchHigh(arr1, 5) == 5));
+        System.out.println("Binary High 7:" + (binarySearchHigh(arr1, 7) == 7));
+        System.out.println("Binary Low 7:" + (binarySearchLow(arr1, 7) == 6));
+        System.out.println("Binary Low 1:" + (binarySearchLow(arr1, 1) == 0));
     }
 }

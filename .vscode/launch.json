@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BinarySearch",
+            "request": "launch",
+            "mainClass": "BinarySearch"
+        },
+        {
+            "type": "java",
             "name": "BFS",
             "request": "launch",
             "mainClass": "com.algos.BFS"
