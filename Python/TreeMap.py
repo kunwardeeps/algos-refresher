@@ -16,7 +16,7 @@ def findRightInterval(intervals: List[List[int]]) -> List[int]:
     # Iterate over the sorted intervals
     for i, interval in enumerate(intervals):
         # Find the index of the right interval using binary search
-        index = bisect_left(sorted_intervals, [interval[1], -float('inf')])
+        index = bisect_left(sorted_intervals, [interval[1], 0])
         # If a right interval is found, update the result list with its index
         if index != len(intervals):
             result[i] = start_points[sorted_intervals[index][0]]
